@@ -4,6 +4,8 @@
  */
 package operaciones;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author mucun
@@ -16,7 +18,7 @@ public class IntegralDefinida extends javax.swing.JFrame {
     public IntegralDefinida() {
         initComponents();
         setLocationRelativeTo(null); // Centrar ventana
-        setTitle("Integra Definida");
+        setTitle("Integral Definida");
     }
 
     /**
@@ -28,21 +30,223 @@ public class IntegralDefinida extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu2 = new javax.swing.JPopupMenu();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
+        jPopupMenu3 = new javax.swing.JPopupMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        BtnRegresar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        Ingreso_LimInferior = new javax.swing.JTextField();
+        Ingreso_LimSuperior = new javax.swing.JTextField();
+        BtnCalcular = new javax.swing.JButton();
+        Ingreso_Entero = new javax.swing.JFormattedTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        Ingreso_Exponente = new javax.swing.JTextField();
+
+        jMenu1.setText("jMenu1");
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
+
+        jMenu2.setText("jMenu2");
+
+        jCheckBoxMenuItem2.setSelected(true);
+        jCheckBoxMenuItem2.setText("jCheckBoxMenuItem2");
+
+        jMenuItem2.setText("jMenuItem2");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        BtnRegresar.setText("Regresar");
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresarActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jLabel1.setText("Integrales definidas");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/img/integral.png"))); // NOI18N
+
+        Ingreso_LimInferior.setText("Limite inferior");
+
+        Ingreso_LimSuperior.setText("Limite superior");
+        Ingreso_LimSuperior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Ingreso_LimSuperiorActionPerformed(evt);
+            }
+        });
+
+        BtnCalcular.setText("Calcular");
+        BtnCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCalcularActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        jLabel3.setText("x");
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        jLabel4.setText("dx");
+
+        Ingreso_Exponente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Ingreso_ExponenteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Ingreso_LimInferior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Ingreso_Entero, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(61, 61, 61)
+                                        .addComponent(Ingreso_Exponente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel3)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(BtnCalcular)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(BtnRegresar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(151, 151, 151)
+                                .addComponent(Ingreso_LimSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(95, 95, 95)
+                                .addComponent(jLabel1)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(Ingreso_LimSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(Ingreso_LimInferior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(BtnCalcular)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(74, 74, 74)
+                                .addComponent(Ingreso_Entero, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(Ingreso_Exponente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BtnRegresar)
+                .addGap(12, 12, 12))
         );
+
+        Ingreso_LimSuperior.getAccessibleContext().setAccessibleName("LimSuperior");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+        new ui.VentanaInicio().setVisible(true);
+            dispose(); // Cierra esta ventana
+    }//GEN-LAST:event_BtnRegresarActionPerformed
+
+    private void Ingreso_LimSuperiorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ingreso_LimSuperiorActionPerformed
+
+    }//GEN-LAST:event_Ingreso_LimSuperiorActionPerformed
+
+    private void BtnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCalcularActionPerformed
+       try {
+        String Limite_SuperiorStr = Ingreso_LimSuperior.getText().trim();
+        String Limite_InferiorStr = Ingreso_LimInferior.getText().trim();
+        String Entero_Str = Ingreso_Entero.getText().trim();
+        String Exponente_Str = Ingreso_Exponente.getText().trim();
+        
+        //Conversion a numeros y validar
+        int Limite_Superior;
+        int Limite_Inferior;
+        int Entero;
+        int Exponente;
+        
+        try {
+            Limite_Superior = Integer.parseInt(Limite_SuperiorStr);
+            Limite_Inferior = Integer.parseInt(Limite_InferiorStr);
+            Entero = Integer.parseInt(Entero_Str);
+            Exponente = Integer.parseInt(Exponente_Str);
+            
+            //
+        double Dividendo_Superior;
+        double Dividendo_Inferior;
+        double Resultado1;
+        double Resultado2;
+        double Resultado_Final;
+        int Divisor;
+        //Metodo de resultado
+        try {
+            Divisor = Exponente + 1;
+            Dividendo_Superior = (Limite_Superior ^ Divisor);
+            Dividendo_Inferior = (Limite_Inferior ^ Divisor);
+            Resultado1 = ((Dividendo_Superior * Entero) / Divisor);
+            Resultado2 = ((Dividendo_Inferior * Entero) / Divisor);
+            Resultado_Final = (Dividendo_Inferior);
+            JOptionPane.showMessageDialog(this, "Resultado de la Integral: " + Resultado_Final);
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Error, deben ser numeros validos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Error, los limites de la integral deben ser un numero valido", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+        }
+       catch (Exception e) {
+           JOptionPane.showMessageDialog(this, "Error inesperado al calcular: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+       }
+    }//GEN-LAST:event_BtnCalcularActionPerformed
+
+    private void Ingreso_ExponenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ingreso_ExponenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Ingreso_ExponenteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,5 +284,26 @@ public class IntegralDefinida extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCalcular;
+    private javax.swing.JButton BtnRegresar;
+    private javax.swing.JFormattedTextField Ingreso_Entero;
+    private javax.swing.JTextField Ingreso_Exponente;
+    private javax.swing.JTextField Ingreso_LimInferior;
+    private javax.swing.JTextField Ingreso_LimSuperior;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JPopupMenu jPopupMenu2;
+    private javax.swing.JPopupMenu jPopupMenu3;
     // End of variables declaration//GEN-END:variables
 }
