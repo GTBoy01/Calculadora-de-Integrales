@@ -1,14 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package operaciones;
 
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author mucun
+ * @author
  */
 public class IntegralDefinida extends javax.swing.JFrame {
 
