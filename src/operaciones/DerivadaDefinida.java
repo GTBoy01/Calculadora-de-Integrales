@@ -11,6 +11,8 @@ package operaciones;
 
 import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
+import java.math.BigDecimal;
+
 public class DerivadaDefinida extends javax.swing.JFrame {
 
     /**
@@ -20,6 +22,8 @@ public class DerivadaDefinida extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); // Centrar ventana
         setTitle("Derivadas Definidas");
+        
+        
     }
 
     /**
@@ -36,7 +40,6 @@ public class DerivadaDefinida extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabelresultado = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -46,6 +49,12 @@ public class DerivadaDefinida extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         txtderivacion = new javax.swing.JTextPane();
         jButton1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabelpotenciaresult = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabelrespuesta = new javax.swing.JLabel();
+        Graficar = new javax.swing.JButton();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -66,12 +75,8 @@ public class DerivadaDefinida extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("X =");
 
-        jLabel4.setFont(new java.awt.Font("Goudy Old Style", 1, 48)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("R:");
-
         jLabelresultado.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabelresultado.setForeground(new java.awt.Color(0, 51, 255));
+        jLabelresultado.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel6.setFont(new java.awt.Font("Goudy Old Style", 1, 50)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
@@ -99,127 +104,266 @@ public class DerivadaDefinida extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Goudy Old Style", 1, 48)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("f' (x) =");
+
+        jLabelpotenciaresult.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Goudy Old Style", 1, 50)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("x");
+
+        jLabel8.setFont(new java.awt.Font("Goudy Old Style", 1, 48)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("R=");
+
+        jLabelrespuesta.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabelrespuesta.setForeground(new java.awt.Color(0, 51, 255));
+
+        Graficar.setBackground(new java.awt.Color(255, 255, 255));
+        Graficar.setFont(new java.awt.Font("Stencil", 1, 18)); // NOI18N
+        Graficar.setForeground(new java.awt.Color(255, 0, 51));
+        Graficar.setText("GRAFICAR");
+        Graficar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GraficarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(208, 208, 208))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(199, 199, 199)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelresultado, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(203, 203, 203)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(273, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelpotenciaresult, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(94, 94, 94)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(189, 189, 189)
+                            .addComponent(jButton1))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(163, 163, 163)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(26, 26, 26)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel2))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel8)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabelrespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel7)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabelresultado, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Graficar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel6))))
-                .addGap(60, 60, 60)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(jLabelpotenciaresult, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5)
                     .addComponent(jLabelresultado, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(188, 188, 188)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(210, Short.MAX_VALUE)))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabelrespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(Graficar)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    String dato = txtdato.getText();
-    String derivacion = txtderivacion.getText();
-    String potencia = txtpotencia.getText();
-    
-    try{
-       if(dato.isEmpty() || derivacion.isEmpty() || potencia.isEmpty()){
-           JOptionPane.showMessageDialog(this,"Debe llenar todos los campos: ","Error", JOptionPane.ERROR_MESSAGE);
-           return;
-       } 
-       
-       if (!dato.matches("[0-9]+") || !derivacion.matches("[0-9]+") || !potencia.matches("[0-9]+")){
-       JOptionPane.showMessageDialog(this,"Debe ingresar un dato numerico: ","Error", JOptionPane.ERROR_MESSAGE);
-       return;
-       }
-        
-    int derivar1 = Integer.parseInt(dato);
-    int derivar2 = Integer.parseInt(derivacion);
-    int derivar3 = Integer.parseInt(potencia);
-    
-    
-    int derivando = derivar3*derivar2;
-    int resultado = derivar1*derivando;
-    
-    jLabelresultado.setText(""+resultado);
-    
-    
-    }catch(HeadlessException ex){
-        JOptionPane.showMessageDialog(this, "Error Inesperado", "Error",JOptionPane.ERROR_MESSAGE);
-    }
-    
+// Obtener y limpiar los campos de texto
+    String datoStr = txtdato.getText().trim();  // Base (x)
+    String derivacionStr = txtderivacion.getText().trim();  // Coeficiente (c)
+    String potenciaStr = txtpotencia.getText().trim();  // Exponente original (n)
 
-        // TODO add your handling code here:
+    try {
+        // Validación 1: Asegurarse de que ningún campo esté vacío
+        if (datoStr.isEmpty() || derivacionStr.isEmpty() || potenciaStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe llenar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validación 2: Asegurarse de que sean valores numéricos válidos
+        // - dato y derivacion pueden ser decimales
+        // - potencia debe ser un entero positivo (ya que es un exponente)
+        if (!datoStr.matches("\\d+(\\.\\d+)?")) {
+            JOptionPane.showMessageDialog(this, "El campo 'dato' debe ser un número decimal válido", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!derivacionStr.matches("\\d+(\\.\\d+)?")) {
+            JOptionPane.showMessageDialog(this, "El campo 'derivacion' debe ser un número decimal válido", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!potenciaStr.matches("\\d+")) {  // Solo enteros positivos (sin decimales)
+            JOptionPane.showMessageDialog(this, "El campo 'potencia' debe ser un entero positivo", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Parsear los valores
+        BigDecimal base = new BigDecimal(datoStr);  // Base (x)
+        BigDecimal coeficiente = new BigDecimal(derivacionStr);  // Coeficiente (c)
+        int expOriginal = Integer.parseInt(potenciaStr);  // Exponente original (n)
+
+        // Validación adicional: El exponente debe ser positivo (mayor a 0 para derivadas estándar)
+        if (expOriginal <= 0) {
+            JOptionPane.showMessageDialog(this, "El exponente debe ser un entero positivo mayor a 0", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Calcular la derivada: f'(x) = c * n * x^(n-1)
+        int expNuevo = expOriginal - 1;  // Nuevo exponente (n-1)
+        BigDecimal potenciaCalc = base.pow(expNuevo);  // x^(n-1)
+        BigDecimal resultadoFinal = coeficiente.multiply(BigDecimal.valueOf(expOriginal)).multiply(potenciaCalc);  // c * n * x^(n-1)
+
+        // Actualizar la interfaz según el caso
+        if (expNuevo > 1) {
+            // Si el nuevo exponente es mayor a 1, mostrar la expresión completa
+            jLabelresultado.setText(expOriginal + " * " + coeficiente + " * " + base + "^" + expNuevo);
+            jLabelpotenciaresult.setText("");  // Solo el exponente
+            jLabelrespuesta.setText(resultadoFinal.toPlainString());  // Valor numérico
+        } else if (expNuevo == 1) {
+            // Si el nuevo exponente es 1, la derivada es lineal: c * n * x
+            jLabelresultado.setText(expOriginal + " * " + coeficiente + " * " + base);
+            jLabelpotenciaresult.setText("");  // No mostrar exponente
+            jLabelrespuesta.setText(resultadoFinal.toPlainString());
+        } else if (expNuevo == 0) {
+            // Si el nuevo exponente es 0, la derivada es una constante: c * n * x^0 = c * n
+            jLabelresultado.setText(String.valueOf(resultadoFinal));
+            jLabelpotenciaresult.setText("");  // No mostrar exponente
+            jLabelrespuesta.setText(resultadoFinal.toPlainString());
+        } else {
+            // Si expNuevo < 0 (aunque ya validamos expOriginal > 0, por si acaso)
+            JOptionPane.showMessageDialog(this, "El exponente resultante es negativo, lo cual no se maneja en este contexto", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            jLabelresultado.setText("No definido");
+            jLabelpotenciaresult.setText("");
+            jLabelrespuesta.setText("");
+        }
+
+
+        
+     
+    } catch (NumberFormatException ex) {
+        // Excepción específica para errores en parseo de números
+        JOptionPane.showMessageDialog(this, "Error en los valores ingresados: asegúrese de que sean números válidos", "Error", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception ex) {
+        // Excepción general para otros errores (e.g., problemas con BigDecimal)
+        JOptionPane.showMessageDialog(this, "Error inesperado: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void GraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GraficarActionPerformed
+                                           
+    try {
+        String datoStr = txtdato.getText().trim();
+        String derivacionStr = txtderivacion.getText().trim();
+        String potenciaStr = txtpotencia.getText().trim();
+
+        if (datoStr.isEmpty() || derivacionStr.isEmpty() || potenciaStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe llenar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        double base = Double.parseDouble(datoStr);
+        double coef = Double.parseDouble(derivacionStr);
+        int expOriginal = Integer.parseInt(potenciaStr);
+
+        if (expOriginal <= 0) {
+            JOptionPane.showMessageDialog(this, "El exponente debe ser mayor que 0", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Generar puntos X y Y de la derivada
+        int numPuntos = 200; // más puntos = curva más suave
+        double[] xs = new double[numPuntos];
+        double[] ys = new double[numPuntos];
+        double incremento = 0.1; // paso fino para curva suave
+
+        for (int i = 0; i < numPuntos; i++) {
+            double x = base + i * incremento;
+            xs[i] = x;
+            ys[i] = coef * expOriginal * Math.pow(x, expOriginal - 1);
+
+            if (Double.isInfinite(ys[i]) || Double.isNaN(ys[i])) {
+                ys[i] = 0;
+            }
+        }
+
+        // Mostrar gráfica
+        operaciones.GraficaResultados.mostrarGrafica(xs, ys, "Derivada f'(x)");
+
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Ingrese valores numéricos válidos", "Error", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this, "Error inesperado: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+
+
+
+
+    }//GEN-LAST:event_GraficarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,12 +401,17 @@ public class DerivadaDefinida extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Graficar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabelpotenciaresult;
+    private javax.swing.JLabel jLabelrespuesta;
     private javax.swing.JLabel jLabelresultado;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
