@@ -8,6 +8,7 @@ package ui;
  *
  * @author mucun
  */
+import javax.swing.JOptionPane;
 public class VentanaInicio extends javax.swing.JFrame {
 
     /**
@@ -30,13 +31,32 @@ public class VentanaInicio extends javax.swing.JFrame {
         });
 
         btnDeriDef.addActionListener(e -> {
+            if (chboxEnX.isSelected()){
             new operaciones.DerivadaDefinida().setVisible(true);
-            dispose();
+              dispose();
+            }
+              if (chboxEnY.isSelected()){
+            new operaciones.DerivadaDefinida().setVisible(true);
+              dispose();
+              } else{
+            JOptionPane.showMessageDialog(this,"Debe seleccionar una variante a trabajar","Error:",JOptionPane.ERROR_MESSAGE);
+            }
+          
         });
 
         btnDeriInde.addActionListener(e -> {
+            if (chboxEnX.isSelected()){
             new operaciones.DerivadaIndefinida().setVisible(true);
-            dispose();
+              dispose();
+              return;
+            }
+              if (chboxEnY.isSelected()){
+            new operaciones.DerivadainDefinida2().setVisible(true);
+              dispose();
+              } else{
+            JOptionPane.showMessageDialog(this,"Debe seleccionar una variante a trabajar","Error:",JOptionPane.ERROR_MESSAGE);
+            }
+          
         });
 
         btnSalir.addActionListener(e -> System.exit(0));
@@ -44,6 +64,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         // Checkboxes (solo uno a la vez)
         chboxEnX.addActionListener(e -> {
             if (chboxEnX.isSelected()) chboxEnY.setSelected(false);
+            
         });
         chboxEnY.addActionListener(e -> {
             if (chboxEnY.isSelected()) chboxEnX.setSelected(false);
