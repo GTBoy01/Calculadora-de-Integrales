@@ -6,17 +6,26 @@ package operaciones;
 
 /**
  *
- * @author mucun
+ * @author macom
  */
 
+
+import org.lsmp.djep.djep.DJep;
+import org.nfunk.jep.Node;
+import org.nfunk.jep.ParseException;
+import org.nfunk.jep.JEP;
 import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 
-public class DerivadaDefinida extends javax.swing.JFrame {
+public class DerivadaDefinida2 extends javax.swing.JFrame {
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DerivadaDefinida2.class.getName());
 
-
- operaciones.DerivadaDefinidasX derivadax;
-    public DerivadaDefinida() {
+    /**
+     * Creates new form DerivadaDefinida2
+     */
+    DerivadaDefinidasY derivaday;
+    public DerivadaDefinida2() {
         initComponents();
         setLocationRelativeTo(null); // Centrar ventana
         setTitle("Derivadas Definidas");
@@ -33,7 +42,6 @@ public class DerivadaDefinida extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -50,8 +58,6 @@ public class DerivadaDefinida extends javax.swing.JFrame {
         Graficar1 = new javax.swing.JButton();
         jButtonLimpiar = new javax.swing.JButton();
 
-        jMenuItem1.setText("jMenuItem1");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -65,9 +71,9 @@ public class DerivadaDefinida extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText(" f (x) = ");
 
-        jLabel3.setFont(new java.awt.Font("Goudy Old Style", 1, 55)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Goudy Old Style", 1, 48)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("X =");
+        jLabel3.setText("Y =");
 
         jLabelderivacion.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabelderivacion.setForeground(new java.awt.Color(0, 0, 0));
@@ -157,54 +163,57 @@ public class DerivadaDefinida extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonderivar)
                         .addGap(47, 47, 47)))
-                .addComponent(jButtonLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButtonLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(Graficar1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Graficar1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(163, 163, 163)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtdato, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel2))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(txtderivacion, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabelderivacion, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(94, 94, 94)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(63, 63, 63)
-                            .addComponent(jLabel8)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabelrespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(163, 163, 163)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtdato, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtderivacion, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelderivacion, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelrespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtdato, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
+                        .addGap(62, 62, 62)
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtdato, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(48, 48, 48)
+                        .addGap(58, 58, 58)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtderivacion, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -244,59 +253,50 @@ public class DerivadaDefinida extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonderivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonderivarActionPerformed
-       String funcion1 = txtderivacion.getText();
-   
-   
-       try{
-    if (!funcion1.isEmpty()) {
-        derivadax = new operaciones.DerivadaDefinidasX();
-        derivadax.setFuncionADerivar(funcion1);
-        derivadax.derivar();
+        String funcion1 = txtderivacion.getText();
 
-        String derivada = derivadax.getFuncionDerivada();
-        String resultadoTexto = derivada;
-        String textoX = txtdato.getText().trim();
+        try{
+            if (!funcion1.isEmpty()) {
+                derivaday = new DerivadaDefinidasY();
+                derivaday.setFuncionADerivar(funcion1);
+                derivaday.derivar();
 
-        // Solo evalúa si la derivada contiene "x"
-        if (derivada.contains("x") && !textoX.isEmpty()) {
-            try {
-                double valorX = Double.parseDouble(textoX);
-                double resultadoNum = derivadax.evaluar(valorX);
-                resultadoTexto += valorX;
+                String derivada = derivaday.getFuncionDerivada();
+                String resultadoTexto = derivada;
+                String textoY = txtdato.getText().trim();
 
-                // Mostrar también en jLabelresultado
-                jLabelrespuesta.setText(String.valueOf(resultadoNum));
+                // Solo evalúa si la derivada contiene "x"
+                if (derivada.contains("y") && !textoY.isEmpty()) {
+                    try {
+                        double valorY = Double.parseDouble(textoY);
+                        double resultadoNum = derivaday.evaluar(valorY);
+                        resultadoTexto += valorY;
 
-            } catch (NumberFormatException e) {
-                resultadoTexto += "\nError: valor inválido para x.";
+                        // Mostrar también en jLabelresultado
+                        jLabelrespuesta.setText(String.valueOf(resultadoNum));
+
+                    } catch (NumberFormatException e) {
+                        resultadoTexto += "\nError: valor inválido para y.";
+                    }
+                } else if (!derivada.contains("x")) {
+                    jLabelrespuesta.setText(derivada); // si no hayyx, solo muestra la derivada
+                }
+
+                jLabelderivacion.setText(resultadoTexto);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Campo vacío", "Error", JOptionPane.ERROR_MESSAGE);
             }
-        } else if (!derivada.contains("x")) {
-            jLabelrespuesta.setText(derivada); // si no hay x, solo muestra la derivada
+
+        } catch (HeadlessException ex) {
+            JOptionPane.showMessageDialog(this, "Error inesperado", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
-        jLabelderivacion.setText(resultadoTexto);
-        
-
-    } else {
-        JOptionPane.showMessageDialog(null, "Campo vacío", "Error", JOptionPane.ERROR_MESSAGE);
-    }
-
-} catch (HeadlessException ex) {
-    JOptionPane.showMessageDialog(this, "Error inesperado", "Error", JOptionPane.ERROR_MESSAGE);
-}
- 
-  
-        
-     
     }//GEN-LAST:event_jButtonderivarActionPerformed
-
-        
-   
 
     private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicioActionPerformed
         new ui.VentanaInicio().setVisible(true);
-            dispose();                     
-    
+        dispose();
 
     }//GEN-LAST:event_jButtonInicioActionPerformed
 
@@ -309,37 +309,11 @@ public class DerivadaDefinida extends javax.swing.JFrame {
     }//GEN-LAST:event_txtdatoActionPerformed
 
     private void Graficar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Graficar1ActionPerformed
-       // Obtener el texto de la derivada (desde tu JLabel, o desde derivadax si ya la tienes)
-    String funcionDerivada = jLabelderivacion.getText().trim();
-
-    // Validar que haya una función válida para graficar
-    if (funcionDerivada.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Primero calcula la derivada antes de graficar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
-        return;
-    }
-
-    // Evitar intentar graficar textos no válidos
-    if (!funcionDerivada.contains("x")) {
-        JOptionPane.showMessageDialog(this, "La función derivada no depende de x, no se puede graficar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
-        return;
-    }
-
-    try {
-        // Crear y mostrar la ventana del gráfico
-        operaciones.GraficadorFunciones grafico = new operaciones.GraficadorFunciones(funcionDerivada);
-        grafico.setVisible(true);
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error al graficar la función:\n" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
-
+        // TODO add your handling code here:
     }//GEN-LAST:event_Graficar1ActionPerformed
 
     private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
-        jLabelrespuesta.setText("");
-        jLabelderivacion.setText("");
-        txtdato.setText("");
-        txtderivacion.setText("");
-        
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLimpiarActionPerformed
 
     /**
@@ -358,24 +332,14 @@ public class DerivadaDefinida extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DerivadaDefinida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DerivadaDefinida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DerivadaDefinida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DerivadaDefinida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DerivadaDefinida().setVisible(true);
-            }
-        });
-}
+        java.awt.EventQueue.invokeLater(() -> new DerivadaDefinida2().setVisible(true));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Graficar1;
@@ -390,7 +354,6 @@ public class DerivadaDefinida extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelderivacion;
     private javax.swing.JLabel jLabelrespuesta;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtdato;
     private javax.swing.JTextField txtderivacion;

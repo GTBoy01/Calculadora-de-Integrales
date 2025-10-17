@@ -34,9 +34,10 @@ public class VentanaInicio extends javax.swing.JFrame {
             if (chboxEnX.isSelected()){
             new operaciones.DerivadaDefinida().setVisible(true);
               dispose();
+              return;
             }
               if (chboxEnY.isSelected()){
-            new operaciones.DerivadaDefinida().setVisible(true);
+            new operaciones.DerivadaDefinida2().setVisible(true);
               dispose();
               } else{
             JOptionPane.showMessageDialog(this,"Debe seleccionar una variante a trabajar","Error:",JOptionPane.ERROR_MESSAGE);

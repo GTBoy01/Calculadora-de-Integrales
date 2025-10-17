@@ -91,6 +91,11 @@ public class DerivadainDefinida2 extends javax.swing.JFrame {
         jButtonInicio.setFont(new java.awt.Font("Stencil", 1, 18)); // NOI18N
         jButtonInicio.setForeground(new java.awt.Color(255, 0, 51));
         jButtonInicio.setText("INICIO");
+        jButtonInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInicioActionPerformed(evt);
+            }
+        });
 
         jButtonLimpiar.setBackground(new java.awt.Color(255, 255, 255));
         jButtonLimpiar.setFont(new java.awt.Font("Stencil", 1, 18)); // NOI18N
@@ -135,9 +140,9 @@ public class DerivadainDefinida2 extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(82, 82, 82)
                         .addComponent(jButtonDerivar, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(37, 37, 37))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(72, 72, 72)
                 .addComponent(jButtonInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,6 +231,11 @@ public class DerivadainDefinida2 extends javax.swing.JFrame {
         jLabelderivada.setText("");
         txtderivando1.setText("");
     }//GEN-LAST:event_jButtonLimpiarActionPerformed
+
+    private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicioActionPerformed
+        new ui.VentanaInicio().setVisible(true);
+            dispose();
+    }//GEN-LAST:event_jButtonInicioActionPerformed
 
     /**
      * @param args the command line arguments
