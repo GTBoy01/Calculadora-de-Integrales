@@ -86,6 +86,11 @@ public class DerivadainDefinida2 extends javax.swing.JFrame {
         jButtonGraficar.setFont(new java.awt.Font("Stencil", 1, 18)); // NOI18N
         jButtonGraficar.setForeground(new java.awt.Color(255, 0, 51));
         jButtonGraficar.setText("GRAFICAR");
+        jButtonGraficar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGraficarActionPerformed(evt);
+            }
+        });
 
         jButtonInicio.setBackground(new java.awt.Color(255, 255, 255));
         jButtonInicio.setFont(new java.awt.Font("Stencil", 1, 18)); // NOI18N
@@ -236,6 +241,36 @@ public class DerivadainDefinida2 extends javax.swing.JFrame {
         new ui.VentanaInicio().setVisible(true);
             dispose();
     }//GEN-LAST:event_jButtonInicioActionPerformed
+
+    private void jButtonGraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGraficarActionPerformed
+ try {
+        // Verificar que se haya derivado
+        if (derivada1 == null || derivada1.getFuncionDerivada() == null || derivada1.getFuncionDerivada().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Primero debe derivar la función", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String funcionDerivada = derivada1.getFuncionDerivada(); // Obtenemos la derivada ya calculada
+
+        Double valorY = null; // Punto opcional sobre y
+        Double valorX = null; // Se calculará si se pone valorY
+
+        // Crear y mostrar graficador
+        operaciones.GraficadorDerivadaY graf = new operaciones.GraficadorDerivadaY(
+                "Gráfica de f'(y)",
+                funcionDerivada,
+                valorY,
+                valorX
+        );
+        graf.setVisible(true);
+
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this, "Error al graficar: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        ex.printStackTrace();
+    }
+  
+
+    }//GEN-LAST:event_jButtonGraficarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -10,11 +10,13 @@ package operaciones;
  */
 import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
-public class DerivadaIndefinida extends javax.swing.JFrame {
+import operaciones.Derivadas;
+
 
     /**
      * Creates new form DerivadaIndefinida
      */
+public class DerivadaIndefinida extends javax.swing.JFrame {
     Derivadas derivada;
     public DerivadaIndefinida() {
   
@@ -23,7 +25,6 @@ public class DerivadaIndefinida extends javax.swing.JFrame {
         setTitle("Derivada Indefinida en X");
         
    
-
     }
 
     /**
@@ -41,7 +42,7 @@ public class DerivadaIndefinida extends javax.swing.JFrame {
         jLabelderivada = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnDerivar = new javax.swing.JButton();
         jButtonLimpiar = new javax.swing.JButton();
         jButtonInicio = new javax.swing.JButton();
         jButtonGraficar = new javax.swing.JButton();
@@ -73,13 +74,13 @@ public class DerivadaIndefinida extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("f ' (x) =");
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Stencil", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 0, 51));
-        jButton1.setText("DERIVAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnDerivar.setBackground(new java.awt.Color(255, 255, 255));
+        btnDerivar.setFont(new java.awt.Font("Stencil", 1, 18)); // NOI18N
+        btnDerivar.setForeground(new java.awt.Color(255, 0, 51));
+        btnDerivar.setText("DERIVAR");
+        btnDerivar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnDerivarActionPerformed(evt);
             }
         });
 
@@ -107,6 +108,11 @@ public class DerivadaIndefinida extends javax.swing.JFrame {
         jButtonGraficar.setFont(new java.awt.Font("Stencil", 1, 18)); // NOI18N
         jButtonGraficar.setForeground(new java.awt.Color(255, 0, 51));
         jButtonGraficar.setText("GRAFICAR");
+        jButtonGraficar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGraficarActionPerformed(evt);
+            }
+        });
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Stencil", 1, 24)); // NOI18N
@@ -136,7 +142,7 @@ public class DerivadaIndefinida extends javax.swing.JFrame {
                                 .addComponent(jLabelderivada, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(88, 88, 88)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnDerivar, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(46, 46, 46)
                                 .addComponent(jButtonGraficar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -182,7 +188,7 @@ public class DerivadaIndefinida extends javax.swing.JFrame {
                     .addComponent(jLabelderivada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnDerivar)
                     .addComponent(jButtonGraficar))
                 .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -205,30 +211,31 @@ public class DerivadaIndefinida extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnDerivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDerivarActionPerformed
 
-       String funcion = txtderivando.getText();
-        
-        try{
-        
-        if (!funcion.isEmpty()) {
-            derivada = new Derivadas();
-            derivada.setFuncionADerivar(funcion);
-            derivada.derivar();
-            jLabelderivada.setText(derivada.getFuncionDerivada());
-        }else{
-            JOptionPane.showMessageDialog(null, "Campo vacio", "Error", JOptionPane.ERROR_MESSAGE);
+       String funcion = txtderivando.getText().trim();
+
+        try {
+            if (!funcion.isEmpty()) {
+                // Asegurarse que derivada sea atributo de clase
+                derivada = new Derivadas();
+                derivada.setFuncionADerivar(funcion);
+                derivada.derivar();
+
+                // Mostrar la derivada en el JLabel
+                jLabelderivada.setText(derivada.getFuncionDerivada());
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Campo vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error inesperado: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
         }
+    
 
-        
-        
-        }catch(HeadlessException ex){
-            JOptionPane.showMessageDialog(this,"Error Inesperado ","Error", JOptionPane.ERROR_MESSAGE);
-            
-        }
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+       
+    }//GEN-LAST:event_btnDerivarActionPerformed
 
     private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
         jLabelderivada.setText("");
@@ -243,6 +250,34 @@ public class DerivadaIndefinida extends javax.swing.JFrame {
        new ui.VentanaInicio().setVisible(true);
             dispose();
     }//GEN-LAST:event_jButtonInicioActionPerformed
+
+    private void jButtonGraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGraficarActionPerformed
+                                            
+     try {
+        if (derivada != null && derivada.getFuncionDerivada() != null 
+            && !derivada.getFuncionDerivada().isEmpty()) {
+
+            // Crear graficador con punto opcional (puedes poner null si no quieres marcar)
+            operaciones.GraficadorDerivadaX graf = new operaciones.GraficadorDerivadaX(
+                "Gráfica de f'(x)", 
+                derivada.getFuncionDerivada(), 
+                null,  // valorX del punto, null si no quieres
+                null   // valorY del punto, null si no quieres
+            );
+            graf.setVisible(true);
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Primero debes derivar la función", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this, "Error al graficar: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        ex.printStackTrace();
+    }
+
+
+
+
+    }//GEN-LAST:event_jButtonGraficarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -280,7 +315,7 @@ public class DerivadaIndefinida extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnDerivar;
     private javax.swing.JButton jButtonGraficar;
     private javax.swing.JButton jButtonInicio;
     private javax.swing.JButton jButtonLimpiar;

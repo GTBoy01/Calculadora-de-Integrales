@@ -244,47 +244,48 @@ public class DerivadaDefinida extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonderivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonderivarActionPerformed
-       String funcion1 = txtderivacion.getText();
-   
-   
-       try{
+    String funcion1 = txtderivacion.getText().trim();
+
+try {
     if (!funcion1.isEmpty()) {
+        // Crear el objeto derivada y derivar la función
         derivadax = new operaciones.DerivadaDefinidasX();
         derivadax.setFuncionADerivar(funcion1);
         derivadax.derivar();
 
-        String derivada = derivadax.getFuncionDerivada();
-        String resultadoTexto = derivada;
+        // Obtener la derivada simbólica
+        String funcionDerivada = derivadax.getFuncionDerivada();
         String textoX = txtdato.getText().trim();
+        String resultadoTexto = "" + funcionDerivada;
 
-        // Solo evalúa si la derivada contiene "x"
-        if (derivada.contains("x") && !textoX.isEmpty()) {
-            try {
-                double valorX = Double.parseDouble(textoX);
-                double resultadoNum = derivadax.evaluar(valorX);
-                resultadoTexto += valorX;
+        // Mostrar solo la derivada simbólica
+        jLabelderivacion.setText(resultadoTexto);
 
-                // Mostrar también en jLabelresultado
-                jLabelrespuesta.setText(String.valueOf(resultadoNum));
+        // Si hay un valor de x, evaluarlo pero sin mostrarlo en la fórmula
+            if (!textoX.isEmpty()) {
+                try {
+                    double valorX = Double.parseDouble(textoX);
+                    double resultadoNum = derivadax.evaluar(valorX);
 
-            } catch (NumberFormatException e) {
-                resultadoTexto += "\nError: valor inválido para x.";
+                    // Mostrar el resultado numérico aparte
+                    jLabelrespuesta.setText("" + String.format("%.2f", resultadoNum));
+
+                } catch (NumberFormatException e) {
+                    jLabelrespuesta.setText("Error: valor de x inválido");
+                }
+            } else {
+                jLabelrespuesta.setText("");
             }
-        } else if (!derivada.contains("x")) {
-            jLabelrespuesta.setText(derivada); // si no hay x, solo muestra la derivada
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Campo vacío", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
-        jLabelderivacion.setText(resultadoTexto);
-        
-
-    } else {
-        JOptionPane.showMessageDialog(null, "Campo vacío", "Error", JOptionPane.ERROR_MESSAGE);
+    } catch (HeadlessException ex) {
+        JOptionPane.showMessageDialog(this, "Error inesperado", "Error", JOptionPane.ERROR_MESSAGE);
     }
+    
 
-} catch (HeadlessException ex) {
-    JOptionPane.showMessageDialog(this, "Error inesperado", "Error", JOptionPane.ERROR_MESSAGE);
-}
- 
   
         
      
@@ -309,28 +310,31 @@ public class DerivadaDefinida extends javax.swing.JFrame {
     }//GEN-LAST:event_txtdatoActionPerformed
 
     private void Graficar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Graficar1ActionPerformed
-       // Obtener el texto de la derivada (desde tu JLabel, o desde derivadax si ya la tienes)
-    String funcionDerivada = jLabelderivacion.getText().trim();
+       String funcion = txtderivacion.getText().trim();
+       String textoX = txtdato.getText().trim();
 
-    // Validar que haya una función válida para graficar
-    if (funcionDerivada.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Primero calcula la derivada antes de graficar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
-        return;
-    }
+        if (!funcion.isEmpty() && !textoX.isEmpty()) {
+         try {
+        double valorX = Double.parseDouble(textoX);
+        double resultadoY = derivadax.evaluar(valorX);
 
-    // Evitar intentar graficar textos no válidos
-    if (!funcionDerivada.contains("x")) {
-        JOptionPane.showMessageDialog(this, "La función derivada no depende de x, no se puede graficar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
-        return;
-    }
+        GraficadorJFreeChart graf = new GraficadorJFreeChart(
+            "Gráfica de f'(x)",
+            derivadax.getFuncionDerivada(),
+            derivadax,
+            valorX,
+            resultadoY
+        );
 
-    try {
-        // Crear y mostrar la ventana del gráfico
-        operaciones.GraficadorFunciones grafico = new operaciones.GraficadorFunciones(funcionDerivada);
-        grafico.setVisible(true);
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error al graficar la función:\n" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
+        graf.setVisible(true);
+
+         } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Valor de x inválido", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        } else {
+            JOptionPane.showMessageDialog(this, "Ingrese una función y un valor de x", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
 
     }//GEN-LAST:event_Graficar1ActionPerformed
 

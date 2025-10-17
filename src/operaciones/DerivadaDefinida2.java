@@ -24,7 +24,7 @@ public class DerivadaDefinida2 extends javax.swing.JFrame {
     /**
      * Creates new form DerivadaDefinida2
      */
-    DerivadaDefinidasY derivaday;
+    operaciones.DerivadaDefinidasY derivaday;
     public DerivadaDefinida2() {
         initComponents();
         setLocationRelativeTo(null); // Centrar ventana
@@ -309,7 +309,33 @@ public class DerivadaDefinida2 extends javax.swing.JFrame {
     }//GEN-LAST:event_txtdatoActionPerformed
 
     private void Graficar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Graficar1ActionPerformed
-        // TODO add your handling code here:
+    String funcion = txtderivacion.getText().trim();
+    String textoY = txtdato.getText().trim();
+
+    if (!funcion.isEmpty() && !textoY.isEmpty()) {
+    try {
+        double valorY = Double.parseDouble(textoY);
+        double resultadoX = derivaday.evaluar(valorY);
+
+        GraficadorJFreeChartY graf = new GraficadorJFreeChartY(
+            "Gráfica de f'(Y)",
+            derivaday.getFuncionDerivada(),
+            derivaday,
+            valorY,
+            resultadoX
+        );
+
+        graf.setVisible(true);
+
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Valor de y inválido", "Error", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    } else {
+    JOptionPane.showMessageDialog(this, "Ingrese una función y un valor de y", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
     }//GEN-LAST:event_Graficar1ActionPerformed
 
     private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
