@@ -188,7 +188,7 @@ public class GraficadorFunciones extends JFrame{
         System.out.println("=== FIN DEBUG ===");
     }
     
-    // Panel gráfico (el mismo de antes, pero funcionando)
+    // Creacion del panel de la grafica de la funcion
     private class PanelGrafico extends JPanel {
         @Override
         protected void paintComponent(Graphics g) {
@@ -218,7 +218,7 @@ public class GraficadorFunciones extends JFrame{
             g2d.drawLine(width/2, 0, width/2, height); // Eje Y
             g2d.drawLine(0, height/2, width, height/2); // Eje X
             
-            // Marcas
+            // Marcas del plano con sus numeros en escala
             g2d.setColor(Color.BLACK);
             g2d.setFont(new Font("Arial", Font.PLAIN, 12));
             
@@ -242,7 +242,7 @@ public class GraficadorFunciones extends JFrame{
                 }
             }
             
-            // Origen
+            // Origen del plano (0,0)
             g2d.drawString("0", width/2 + 5, height/2 + 15);
         }
         
