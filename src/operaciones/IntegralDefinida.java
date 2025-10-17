@@ -295,13 +295,14 @@ public class IntegralDefinida extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_LimpiarActionPerformed
 
     private void Btn_Graficar_FuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Graficar_FuncionActionPerformed
-        //
+        //Boton de graficación, llamamos a la clase GraficadorFunciones
          try {
-        // Obtener la función de tu interfaz (ajusta según tus componentes)
-        String funcion = ""; // Aquí obtén la función de tu JTextField
+        // Obtener la función desde la interfaz
+        String funcion = ""; // Aquí obtenemos la funcion desde el JTextField
         
-        // Si no tienes un campo específico, pedir la función
+        // Manejo de errores
         if (funcion.isEmpty()) {
+            //Mostramos este mensaje para que el usuario sepa que tipo de funciones puede ingresar
             funcion = JOptionPane.showInputDialog(this, 
                 "Ingresa la función a graficar:\nEjemplos: x^2, sin(x), 2*x+3", 
                 "Graficar Función", JOptionPane.QUESTION_MESSAGE);
@@ -313,7 +314,7 @@ public class IntegralDefinida extends javax.swing.JFrame {
         
         funcion = funcion.trim();
         
-        // Crear y mostrar el graficador
+        // Crear y mostrar la ventana del graficador
         GraficadorFunciones graficador = new GraficadorFunciones(funcion);
         graficador.setVisible(true);
         
@@ -323,7 +324,7 @@ public class IntegralDefinida extends javax.swing.JFrame {
             "Error", JOptionPane.ERROR_MESSAGE);
         e.printStackTrace();
     }
-        //
+        // Fin del metodo del boton de graficacion
     }//GEN-LAST:event_Btn_Graficar_FuncionActionPerformed
 
     /**
