@@ -12,14 +12,14 @@ import java.util.List;
 
 /**
  *
- * @author usuario
+ * @author GTBOY
  */
-public class GraficadorFunciones extends JFrame{
+public class GraficadorFuncionesY extends JFrame{
     //
     private String funcion;
     private List<Point.Double> puntos;
     
-    public GraficadorFunciones(String funcion) {
+    public GraficadorFuncionesY(String funcion) {
         this.funcion = funcion;
         this.puntos = new ArrayList<>();
         inicializarVentana();
@@ -29,20 +29,21 @@ public class GraficadorFunciones extends JFrame{
     
     private void inicializarVentana() {
         //Iniciamos la ventana y sus atributos
-        setTitle("Gráfico: f(x) = " + funcion);
+        setTitle("Gráfico sobre Y: f(y) = " + funcion);
         setSize(800, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         add(new PanelGrafico());
     }
     
-    private void calcularPuntos() { //Metodo que se encarga de dibujar los puntos en base a la funcion dada
+    private void calcularPuntos() {
+        //Metodo que se encarga de dibujar los puntos en base a la funcion dada
         puntos.clear();
         
-        for (double x = -5.0; x <= 5.0; x += 0.1) {
+        for (double y = -5.0; y <= 5.0; y += 0.1) {
             try {
-                double y = evaluarFuncionManual(x);
-                if (!Double.isNaN(y) && !Double.isInfinite(y)) {
+                double x = evaluarFuncionManual(y);
+                if (!Double.isNaN(x) && !Double.isInfinite(x)) {
                     puntos.add(new Point.Double(x, y));
                 }
             } catch (Exception e) {
@@ -51,64 +52,64 @@ public class GraficadorFunciones extends JFrame{
         }
     }
     
-    private double evaluarFuncionManual(double x) {
+    private double evaluarFuncionManual(double y) {
         String expr = funcion.toLowerCase().replace(" ", "");
         
         // Casos especiales para funciones comunes
-        if (expr.equals("x")) {
-            return x;
+        if (expr.equals("y")) {
+            return y;
         }
-        else if (expr.equals("x^2") || expr.equals("x2")) {
-            return x * x;
+        else if (expr.equals("y^2") || expr.equals("y2")) {
+            return y * y;
         }
-        else if (expr.equals("x^3") || expr.equals("x3")) {
-            return x * x * x;
+        else if (expr.equals("y^3") || expr.equals("y3")) {
+            return y * y * y;
         }
-        else if (expr.equals("2*x+3") || expr.equals("2x+3")) {
-            return 2 * x + 3;
+        else if (expr.equals("2*y+3") || expr.equals("2y+3")) {
+            return 2 * y + 3;
         }
-        else if (expr.equals("sin(x)")) {
-            return Math.sin(x);
+        else if (expr.equals("sin(y)")) {
+            return Math.sin(y);
         }
-        else if (expr.equals("cos(x)")) {
-            return Math.cos(x);
+        else if (expr.equals("cos(y)")) {
+            return Math.cos(y);
         }
-        else if (expr.equals("tan(x)")) {
-            return Math.tan(x);
+        else if (expr.equals("tan(y)")) {
+            return Math.tan(y);
         }
-        else if (expr.equals("exp(x)") || expr.equals("e^x")) {
-            return Math.exp(x);
+        else if (expr.equals("exp(y)") || expr.equals("e^y")) {
+            return Math.exp(y);
         }
-        else if (expr.equals("log(x)")) {
-            return x > 0 ? Math.log10(x) : Double.NaN;
+        else if (expr.equals("log(y)")) {
+            return y > 0 ? Math.log10(y) : Double.NaN;
         }
-        else if (expr.equals("ln(x)")) {
-            return x > 0 ? Math.log(x) : Double.NaN;
+        else if (expr.equals("ln(y)")) {
+            return y > 0 ? Math.log(y) : Double.NaN;
         }
-        else if (expr.equals("sqrt(x)") || expr.equals("√x")) {
-            return x >= 0 ? Math.sqrt(x) : Double.NaN;
+        else if (expr.equals("sqrt(y)") || expr.equals("√y")) {
+            return y >= 0 ? Math.sqrt(y) : Double.NaN;
         }
-        else if (expr.equals("1/x")) {
-            return x != 0 ? 1.0 / x : Double.NaN;
+        else if (expr.equals("1/y")) {
+            return y != 0 ? 1.0 / y : Double.NaN;
         }
-        else if (expr.equals("abs(x)") || expr.equals("|x|")) {
-            return Math.abs(x);
+        else if (expr.equals("abs(y)") || expr.equals("|y|")) {
+            return Math.abs(y);
         }
         else {
-            // Intentar analizar expresiones simples como "2x", "x+1", etc.
-            return evaluarExpresionSimple(expr, x);
+            // Intentar analizar expresiones simples como "2y", "y+1", etc.
+            return evaluarExpresionSimple(expr, y);
         }
     }
     
-    private double evaluarExpresionSimple(String expr, double x) {
+    private double evaluarExpresionSimple(String expr, double y) {
         try {
             // Quitar espacios y preparar expresión
             expr = expr.replace(" ", "").toLowerCase();
             
-            // Reemplazar x con valor
-            expr = expr.replace("x", "(" + x + ")");
+            // Reemplazar y con valor
+            expr = expr.replace("y", "(" + y + ")");
             
-            // Manejar multiplicación implícita: 2x -> 2*x
+            // Manejar multiplicación implícita: 2y -> 2*y
             expr = expr.replace(")(", ")*(");
             expr = expr.replace("1(", "1*(").replace("2(", "2*(").replace("3(", "3*(")
                      .replace("4(", "4*(").replace("5(", "5*(").replace("6(", "6*(")
@@ -175,14 +176,14 @@ public class GraficadorFunciones extends JFrame{
     }
     
     private void debugFuncion() {
-        System.out.println("=== DEBUG FUNCIÓN: " + funcion + " ===");
+        System.out.println("=== DEBUG FUNCIÓN SOBRE Y: " + funcion + " ===");
         
-        for (double x = -5; x <= 5; x++) {
+        for (double y = -5; y <= 5; y++) {
             try {
-                double y = evaluarFuncionManual(x);
-                System.out.printf("f(%.1f) = %.2f%n", x, y);
+                double x = evaluarFuncionManual(y);
+                System.out.printf("f(%.1f) = %.2f%n", y, x);
             } catch (Exception e) {
-                System.out.printf("f(%.1f) = ERROR: %s%n", x, e.getMessage());
+                System.out.printf("f(%.1f) = ERROR: %s%n", y, e.getMessage());
             }
         }
         System.out.println("Total puntos válidos: " + puntos.size());
@@ -248,7 +249,7 @@ public class GraficadorFunciones extends JFrame{
         }
         
         private void dibujarFuncion(Graphics2D g2d, int width, int height) {
-            g2d.setColor(Color.BLUE);
+            g2d.setColor(Color.RED); // Color diferente para distinguir
             g2d.setStroke(new BasicStroke(2.5f));
             
             Path2D.Double path = new Path2D.Double();
