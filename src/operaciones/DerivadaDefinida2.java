@@ -339,7 +339,10 @@ public class DerivadaDefinida2 extends javax.swing.JFrame {
     }//GEN-LAST:event_Graficar1ActionPerformed
 
     private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
-        // TODO add your handling code here:
+        txtderivacion.setText("");
+        jLabelderivacion.setText("");
+        txtdato.setText("");
+        jLabelrespuesta.setText("");
     }//GEN-LAST:event_jButtonLimpiarActionPerformed
 
     /**

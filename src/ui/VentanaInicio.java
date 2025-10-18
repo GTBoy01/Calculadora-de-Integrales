@@ -157,8 +157,8 @@ public class VentanaInicio extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 630, 20));
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Maco Levy Mendoza Sacach 2290-24-7123");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 530, -1));
+        jLabel7.setText("Maco Leyvy Mendoza Sacach 2290-24-7123");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 530, 50));
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Bryan Emanuel Anleu Rodríguez 2290-20-23001 ");
