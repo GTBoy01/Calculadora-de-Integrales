@@ -103,9 +103,19 @@ public class VentanaInicio extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 90, 20));
 
         btnIntDef.setText("Definidas");
+        btnIntDef.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIntDefActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnIntDef, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 110, -1));
 
         btnIntInde.setText("Indefinidas");
+        btnIntInde.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIntIndeActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnIntInde, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 110, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -144,6 +154,18 @@ public class VentanaInicio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnIntDefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIntDefActionPerformed
+        // TODO add your handling code here:
+        new operaciones.IntegralDefinida().setVisible(true);
+            dispose(); // Cierra esta ventana
+    }//GEN-LAST:event_btnIntDefActionPerformed
+
+    private void btnIntIndeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIntIndeActionPerformed
+        // TODO add your handling code here:
+        new operaciones.IntegralIndefinida().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnIntIndeActionPerformed
 
     /**
      * @param args the command line arguments
